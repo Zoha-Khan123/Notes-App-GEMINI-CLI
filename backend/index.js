@@ -9,7 +9,7 @@ connectToMongo();
 
 const app = express();
 const port = 3000;
-app.use(cors({origin:"https://notes-app-gemini-cli.vercel.app"}));
+app.use(cors({origin:"https://zohrif-notes-app-gemini-cli.vercel.app"}));
 app.use(express.json());
 
 
