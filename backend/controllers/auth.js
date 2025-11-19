@@ -5,8 +5,10 @@ import User from '../schema/User.js';
 
 export const signup = async (req, res) => {
   const errors = validationResult(req);
+  console.log("err",errors.errors);
+  
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({message:errors.errors[0].msg});
   }
 
   try {

@@ -1,6 +1,7 @@
 import express from 'express';
 import connectToMongo from './db.js';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -8,6 +9,7 @@ connectToMongo();
 
 const app = express();
 const port = 3000;
+app.use(cors({origin:"https://notes-app-gemini-cli.vercel.app"}));
 app.use(express.json());
 
 

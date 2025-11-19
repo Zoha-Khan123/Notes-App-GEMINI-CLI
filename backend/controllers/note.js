@@ -3,7 +3,7 @@ import Note from '../schema/Note.js';
 // Get all notes
 export const getNotes = async (req, res) => {
     try {
-        const notes = await Note.find({ user: req.user.id });
+        const notes = await Note.find({ user: req.user.id }).sort({ date: -1 });
         res.json(notes);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -12,10 +12,10 @@ export const getNotes = async (req, res) => {
 
 // Create a new note
 export const createNote = async (req, res) => {
-    const { title, description, status } = req.body;
+    const { title, content, status } = req.body;
     const note = new Note({
         title,
-        description,
+        content,
         status,
         user: req.user.id
     });
